@@ -3,11 +3,15 @@ plugins {
     id 'maven-publish'
 }
 
-version = project.mod_version
-group = project.maven_group
+def modVersion = (findProperty('mod_version') ?: '0.0.0-dev').toString()
+def mavenGroup = (findProperty('maven_group') ?: 'com.dominioncore').toString()
+def archivesBaseName = (findProperty('archives_base_name') ?: 'dominioncore').toString()
+
+version = modVersion
+group = mavenGroup
 
 base {
-    archivesName = project.archives_base_name
+    archivesName = archivesBaseName
 }
 
 repositories {
